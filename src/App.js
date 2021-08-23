@@ -1,25 +1,9 @@
 import {db} from './config/firebase';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
 
-  const insertData = async ()=>{
-    
-      let record = {
-        id:"1",
-        name:"Abu Bakar",
-        class:"BSCS",
-        batch:"2018-2022",
-        rollNo:"2317",
-      }
-
-      try {
-       let recordInserting = await db.collection("students").add(record)
-       console.log(recordInserting)
-      } catch (error) {
-        console.log("error",error)
-      }
-
-  }
 
   const fetchData = async ()=>{
     
@@ -75,7 +59,7 @@ function App() {
 
   return (
     <div style={{display:"flex",flexDirection:"column",width:"20%",margin:"auto"}}>
-      <button onClick={insertData}>Add Data to Database</button> <br /><br />
+      <button className="btn btn-primary"> <i class="fa fa-user" aria-hidden="true"></i> Add Data to Database</button> <br /><br />
       <button onClick={fetchData}>Show All Data</button><br /><br />
       <button onClick={deleteData}>Delete Record</button><br /><br />
       <button onClick={updateData}>Update Record</button><br /><br />
