@@ -1,68 +1,80 @@
-import {db} from './config/firebase';
+// import {db} from './config/firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+import CreateRecord from './components/CreateRecord';
+import ShowRecord from './components/ShowRecords';
 
 function App() {
 
 
-  const fetchData = async ()=>{
+  // const fetchData = async ()=>{
     
-    try {
+  //   try {
      
-      let fetchingRecord = await db.collection("students").get()
+  //     let fetchingRecord = await db.collection("students").get()
      
-      fetchingRecord.forEach((singlRecord)=>{
-         console.log(singlRecord.data())
-      })
+  //     fetchingRecord.forEach((singlRecord)=>{
+  //        console.log(singlRecord.data())
+  //     })
 
-    } catch (error) {
-      console.log("error",error)
-    }
+  //   } catch (error) {
+  //     console.log("error",error)
+  //   }
 
-  }
+  // }
 
-  const deleteData = async ()=>{
+  // const deleteData = async ()=>{
     
-    try {
+  //   try {
      
-      let deleteRecord = await db.collection("students").doc("jArbt6avOdxZ80WYyJSO").delete()
-      console.log(deleteRecord.data())
-    } catch (error) {
-      console.log("error",error)
-    }
+  //     let deleteRecord = await db.collection("students").doc("jArbt6avOdxZ80WYyJSO").delete()
+  //     console.log(deleteRecord.data())
+  //   } catch (error) {
+  //     console.log("error",error)
+  //   }
 
-  }
+  // }
 
-  const updateData = async ()=>{
+  // const updateData = async ()=>{
     
-    let updatedRecord = {
-      id:"2",
-      name:"Adnan Ikram",
-      class:"BSCS",
-      batch:"2018-2022",
-      rollNo:"2305",
-    }
+  //   let updatedRecord = {
+  //     id:"2",
+  //     name:"Adnan Ikram",
+  //     class:"BSCS",
+  //     batch:"2018-2022",
+  //     rollNo:"2305",
+  //   }
 
 
-    try {
+  //   try {
      
-      let updateRecord = await db.collection("students").doc("l1vJ9n0JLMwg3Zcx4b0q").update(updatedRecord)
-      console.log(updateRecord.data())
+  //     let updateRecord = await db.collection("students").doc("l1vJ9n0JLMwg3Zcx4b0q").update(updatedRecord)
+  //     console.log(updateRecord.data())
 
-    } catch (error) {
+  //   } catch (error) {
 
-      console.log("error",error)
+  //     console.log("error",error)
       
-    }
+  //   }
 
-  }
+  // }
 
+  const record = [{
+          id:"1",
+          name:"Abu Bakar",
+          class:"BSCS",
+          batch:"2018-2022",
+          rollNo:"2317"
+  }]
+  
   return (
-    <div style={{display:"flex",flexDirection:"column",width:"20%",margin:"auto"}}>
-      <button className="btn btn-primary"> <i class="fa fa-user" aria-hidden="true"></i> Add Data to Database</button> <br /><br />
-      <button onClick={fetchData}>Show All Data</button><br /><br />
+
+    <div>
+      <CreateRecord />
+      <ShowRecord records={record} />
+      {/* <button onClick={fetchData}>Show All Data</button><br /><br />
       <button onClick={deleteData}>Delete Record</button><br /><br />
-      <button onClick={updateData}>Update Record</button><br /><br />
+      <button onClick={updateData}>Update Record</button><br /><br /> */}
     </div>
   );
 }
